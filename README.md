@@ -5,7 +5,7 @@ Node.js cli that takes in information about employees, then generates an HTML we
 This project I hit a wall. I can not figure out how to get it working and have run out of time. Didn't even get the chance to do tests. I'm feeling a bit disapointed, as this was week covered topics I really wanted to get a grasp of, and failed misserablly. How do we circle back on these things we only skimmed the surface of?
 
 ## Demo
-https://erickmeline.github.io/BBC/
+https://erickmeline.github.io/Profile-Generator/
 
 ## Uses
 HTML/CSS/JS/Node
