@@ -6,21 +6,18 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
 const getManager = () => {
-    inquirer.prompt().then((response) => {
-
-    });
+    const questions = [].concat(inputs_manager, inputs_generic);
+    return inquirer.prompt(questions);
 }
 
 const getEngineer = () => {
-    inquirer.prompt().then((response) => {
-
-    });
+    const questions = [].concat(inputs_engineer, inputs_generic);
+    return inquirer.prompt(questions);
 }
 
 const getIntern = () => {
-    inquirer.prompt().then((response) => {
-
-    });
+    const questions = [].concat(inputs_intern, inputs_generic);
+    return inquirer.prompt(questions);
 }
 
 const inputs_manager = [
@@ -32,7 +29,7 @@ const inputs_manager = [
     {
         type: 'input',
         name: 'department',
-        message: 'Department Id:'
+        message: 'Department:'
     }
 ];
 
@@ -74,3 +71,56 @@ const inputs_intern = [
         message: 'School attending:'
     }
 ]
+
+const inputs_options = [
+    {
+        type: 'list',
+        name: 'options',
+        message: 'Select an option:',
+        choices: ['Done', 'Engineer', 'Intern'],
+    }
+]
+
+const team = [];
+let addMore = true;
+const init = () => {
+    getManager().then((response) => {
+        const manager = new Manager(response.name, response.department, response.email, response.id);
+        team.push(manager);
+        console.log('-----------------------------------');
+        console.log(`Added manager: ${response.name}`);
+        console.log('-----------------------------------');
+    }).then(() => {
+        checkOptions();
+    });
+}
+
+const checkOptions = () => {
+    inquirer.prompt(inputs_options).then((response) => {
+        if (response.options === 'Engineer') {
+            getEngineer().then((response) => {
+                const engineer = new Engineer(response.name, response.email, response.id, response.github);
+                team.push(engineer);
+                console.log('-----------------------------------');
+                console.log(`Added engineer: ${response.name}`);
+                console.log('-----------------------------------');
+                checkOptions();
+            });
+        }
+        else if (response.options === 'Intern') {
+            getIntern().then((response) => {
+                const intern = new Intern(response.name, response.email, response.id, response.school);
+                team.push(intern);
+                console.log('-----------------------------------');
+                console.log(`Added intern: ${response.name}`);
+                console.log('-----------------------------------');
+                checkOptions();
+            });
+        }
+        else {
+            console.log('Done!!!');
+        }
+    });
+}
+
+init();
