@@ -127,8 +127,8 @@ const checkOptions = () => {
 }
 
 const done = () => {
-    console.log('Done!!!');console.log(team);
-    fs.writeFileSync('index2.html', mainHtml(team), 'utf-8');
+    console.log('Done!!!');
+    fs.writeFileSync('index.html', mainHtml(team.join('')), 'utf-8');
 }
 
 init();
