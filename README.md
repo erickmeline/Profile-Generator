@@ -9,7 +9,7 @@ A Node cli app that will prompt a user for information about the team manager an
 https://erickmeline.github.io/Profile-Generator/
 
 ## Walkthrough video
-https://youtu.be/TkdjWBhXukk
+https://youtu.be/k80OlSKm_II
 
 ## Uses
 HTML/CSS/JS/Node
