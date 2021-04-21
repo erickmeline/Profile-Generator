@@ -102,7 +102,7 @@ const checkOptions = () => {
     inquirer.prompt(inputs_options).then((response) => {
         if (response.options === 'Engineer') {
             getEngineer().then((response) => {
-                const engineer = new Engineer(response.name, response.email, response.id, response.github);
+                const engineer = new Engineer(response.name, response.id, response.email, response.github);
                 team.push(card(engineer));
                 console.log('-----------------------------------');
                 console.log(`Added engineer: ${response.name}`);
@@ -112,7 +112,7 @@ const checkOptions = () => {
         }
         else if (response.options === 'Intern') {
             getIntern().then((response) => {
-                const intern = new Intern(response.name, response.email, response.id, response.school);
+                const intern = new Intern(response.name, response.id, response.email, response.school);
                 team.push(card(intern));
                 console.log('-----------------------------------');
                 console.log(`Added intern: ${response.name}`);
